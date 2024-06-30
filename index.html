@@ -3,85 +3,566 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>frontend work 2</title>
+    <style>
+      @media only screen and (min-width: 320px) and (max-width: 780px) {
+        * {
+          box-sizing: border-box;
+          margin: 0px;
+          padding: 0px;
+        }
+        :root {
+          --background: #2e3035;
+          --buttonbg: #00c208;
+          --collor: #fff;
+          --buttonRadios: 10px;
+          --textClamp: clamp(14px, 3vw, 16px);
+          ---htextClamp: clamp(24px, 7vw, 32px);
+          --imgRadius: 10px;
+          --componetn: 10px;
+          --padding: 5px 10px;
+          --cardWidth: 150px;
+          --cardHeight: 180px;
+        }
+        body {
+          background: var(--background);
+          color: var(--collor);
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        h1 {
+          font-size: var(---htextClamp);
+        }
+        a {
+          text-decoration: none;
+        }
+
+        .conataier {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: space-evenly;
+          padding: 10px 10px;
+        }
+        .product_card {
+          width: max-content;
+          max-width: 171px;
+          height: max-content;
+          padding: 10px 10px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 8px;
+          justify-content: center;
+          align-items: center;
+          border-radius: var(--componetn);
+          -webkit-box-shadow: 3px 12px 102px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 3px 12px 102px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 3px 12px 102px 0px rgba(0, 0, 0, 0.75);
+        }
+        .product_card__text {
+          width: 100%;
+          text-align: center;
+          font-size: var(--textClamp);
+          color: var(--collor);
+          text-wrap: wrap;
+          overflow: hidden;
+        }
+        .product_card__img {
+          width: 132px;
+          height: 132px;
+          border-radius: var(--imgRadius);
+        }
+        .product-card__link {
+          padding: 10px 15px;
+          font-size: var(--textClamp);
+          background: #00c208;
+          border-radius: var(--buttonRadios);
+          border: none;
+          transition: background 0.1s;
+          font-size: var(--textClamp);
+          text-decoration: none;
+          color: black;
+        }
+        .product-card__link:active {
+          opacity: 0.5;
+        }
+        /* index2 css */
+
+        .header {
+          width: 100%;
+          height: max-content;
+          padding: var(--padding);
+          background: var(--background);
+          /* border-bottom: 1px solid red; */
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          -webkit-box-shadow: 4px 9px 30px -6px rgba(87, 82, 87, 1);
+          -moz-box-shadow: 4px 9px 30px -6px rgba(87, 82, 87, 1);
+          box-shadow: 4px 9px 30px -6px rgba(87, 82, 87, 1);
+        }
+        .massage {
+          width: 100%;
+          height: max-content;
+          padding: 5px 10px;
+          background: #471d1e;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .massage___text {
+            color: #67232b;
+            text-align: center;
+          }
+          .massage___link {
+            color: #67232b;
+          }
+        }
+        .economy {
+          width: 100%;
+          height: max-content;
+          justify-content: space-between;
+          align-items: center;
+          display: flex;
+          padding: var(--padding);
+        }
+        .economy__link {
+          display: flex;
+          column-gap: 10px;
+          align-items: center;
+          justify-content: center;
+          justify-self: auto;
+        }
+        .economy__text {
+          font-size: var(---htextClamp);
+        }
+        .economy__balance {
+          display: flex;
+          column-gap: 10px;
+          font-size: var(---htextClamp);
+        }
+        .carousel-wrapp {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          justify-content: center;
+          align-items: center;
+          background-color: #272727;
+        }
+        .carousel-container {
+          position: relative;
+          width: 100%;
+          height: max-content;
+          overflow: hidden;
+          background: #1c1c1c;
+          box-shadow: 0 5px 15px rgba(36, 36, 36, 0.5);
+        }
+        .carousel-arrow {
+          position: absolute;
+          top: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 22px;
+          height: 60px;
+          background: seagreen;
+          clip-path: polygon(100% 0, 49% 100%, 0 0);
+          border: 1px solid green;
+          z-index: 10;
+        }
+        .carousel {
+          width: max-content;
+          display: flex;
+          column-gap: 10px;
+          transition: transform 0.5s ease;
+          padding: 25px 0px;
+        }
+        .carousel-item {
+          width: var(--cardWidth);
+          height: var(--cardHeight);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid seagreen;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          z-index: 1;
+        }
+        .push_balance {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 20px;
+        }
+        .push_balance__text {
+          display: flex;
+          column-gap: 10px;
+          font-size: var(---htextClamp);
+        }
+        .push_balance__button {
+          padding: 20px 40px;
+          border-radius: 10px;
+          background: var(--buttonbg);
+          color: black;
+          font-weight: 700;
+        }
+        .container_case {
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          padding-top: 10px;
+        }
+        .container_case__text {
+          color: #bdbdbdc8;
+          font-size: var(--textClamp);
+        }
+        .container_case__inner {
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          gap: 10px;
+        }
+
+        .case {
+          display: flex;
+          flex-direction: column;
+          width: var(--cardWidth);
+          height: var(--cardHeight);
+          overflow: hidden;
+          border: 1px solid seagreen;
+          border-radius: var(--componetn);
+        }
+        .case__image-wrapper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        .case__image-wrapper img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        .case__description-wrapper {
+          height: 42px;
+          display: flex;
+          flex-direction: column;
+          color: white;
+          padding: 10px;
+          box-sizing: border-box;
+          z-index: 2;
+          overflow: auto;
+          margin-top: -42px; /* Перекрытие изображения */
+        }
+
+        .carouselBlock {
+          display: none;
+        }
+        .hide {
+          display: none;
+        }
+        .show {
+          display: block;
+        }
+        .highlight {
+          /* border: 1px solid red; */
+          -webkit-box-shadow: 0px 0px 2px 2px rgba(123, 127, 131, 1);
+          -moz-box-shadow: 0px 0px 2px 2px rgba(123, 127, 131, 1);
+          box-shadow: 0px 0px 8px 3px rgba(123, 127, 131, 1);
+        }
+      }
+    </style>
   </head>
   <body>
     <main>
-      <div class="conataier">
+      <div class="conataier" id="case_container">
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 1:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 2:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 3:<span>10 $</span> </span>
-          <a href="#">
-            <a href="./index2.html" class="product-card__link">Крутить</a>
-          </a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
         <div class="product_card">
           <img src="./img/product_key.png" alt="" class="product_card__img" />
           <span class="product_card__text"> Кейс 4:<span>10 $</span> </span>
-          <a href="./index2.html" class="product-card__link">Крутить</a>
+          <button class="product-card__link">Крутить</button>
         </div>
       </div>
+
+      <div id="carouselBlock" class="carouselBlock">
+        <div class="header">
+          <div id="back">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              fill="#000000"
+              width="35px"
+              height="48px"
+              viewBox="0 0 24 24"
+              id="left-arrow"
+              data-name="Flat Color"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon flat-color"
+              style="margin-top: 8px"
+            >
+              <path
+                id="primary"
+                d="M21,11H5.41l1.3-1.29A1,1,0,0,0,5.29,8.29l-3,3a1,1,0,0,0,0,1.42l3,3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L5.41,13H21a1,1,0,0,0,0-2Z"
+                style="fill: rgb(245, 244, 244)"
+              ></path>
+            </svg>
+          </div>
+
+          <h1>Название бота</h1>
+          <svg
+            id="icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="currentColor"
+            style="cursor: pointer"
+          >
+            <circle cx="12" cy="5" r="2" />
+            <circle cx="12" cy="12" r="2" />
+            <circle cx="12" cy="19" r="2" />
+          </svg>
+        </div>
+
+        <!-- <div class="massage">
+          <span class="massage___text">У вас бесплатная версия, возможности ограничены</span>
+          <a href="#" class="massage___link"> Оплатить</a>
+        </div> -->
+        <div class="economy">
+          <div class="economy__link">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              fill="#000000"
+              width="35px"
+              height="48px"
+              viewBox="0 0 24 24"
+              id="left-arrow"
+              data-name="Flat Color"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon flat-color"
+              style="margin-top: 8px"
+            >
+              <path
+                id="primary"
+                d="M21,11H5.41l1.3-1.29A1,1,0,0,0,5.29,8.29l-3,3a1,1,0,0,0,0,1.42l3,3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L5.41,13H21a1,1,0,0,0,0-2Z"
+                style="fill: rgb(245, 244, 244)"
+              ></path>
+            </svg>
+
+            <span class="economy__text">Эконом</span>
+          </div>
+          <div class="economy__balance">
+            <div class="economy__quantity">0</div>
+            <span class="economy__currency">BC</span>
+          </div>
+        </div>
+        <!-- sdsdsds -->
+        <div class="carousel-wrapp">
+          <div class="carousel-container">
+            <div class="carousel-arrow"></div>
+            <div id="carousel" class="carousel">
+              <div class="carousel-item" id="item1">Item 1</div>
+              <div class="carousel-item" id="item2">Item 2</div>
+              <div class="carousel-item" id="item3">Item 3</div>
+              <div class="carousel-item" id="item4">Item 4</div>
+              <div class="carousel-item" id="item5">Item 5</div>
+              <div class="carousel-item" id="item6">Item 6</div>
+              <div class="carousel-item" id="item7">Item 7</div>
+              <div class="carousel-item" id="item8">Item 8</div>
+              <div class="carousel-item" id="item9">Item 9</div>
+              <div class="carousel-item" id="item10">Item 10</div>
+              <div class="carousel-item" id="item11">Item 11</div>
+              <div class="carousel-item" id="item12">Item 12</div>
+              <div class="carousel-item" id="item13">Item 13</div>
+              <div class="carousel-item" id="item14">Item 14</div>
+              <div class="carousel-item" id="item15">Item 15</div>
+            </div>
+          </div>
+          <div class="push_balance">
+            <div class="push_balance__text">
+              <span>Пополните</span>
+              <div>
+                <span class="push_balance__quantity">29</span>
+                <span class="push_balance__currency">BC</span>
+              </div>
+            </div>
+            <a href="#" class="push_balance__button">Пополнить</a>
+          </div>
+        </div>
+        <div class="container_case">
+          <h2 class="container_case__text">Что может выпасть</h2>
+          <div class="container_case__inner">
+            <div class="case">
+              <div class="case__image-wrapper">
+                <img src="./img/product_key.png" alt="Описание изображения" />
+              </div>
+              <div class="case__description-wrapper">600 часов.</div>
+            </div>
+            <div class="case">
+              <div class="case__image-wrapper">
+                <img src="./img/product_key.png" alt="Описание изображения" />
+              </div>
+              <div class="case__description-wrapper">600 часов.</div>
+            </div>
+            <div class="case">
+              <div class="case__image-wrapper">
+                <img src="./img/product_key.png" alt="Описание изображения" />
+              </div>
+              <div class="case__description-wrapper">600 часов.</div>
+            </div>
+            <div class="case">
+              <div class="case__image-wrapper">
+                <img src="./img/product_key.png" alt="Описание изображения" />
+              </div>
+              <div class="case__description-wrapper">600 часов.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- sdsdsdsdsd -->
+      </div>
     </main>
+
+    <script>
+      const spinButton = document.querySelectorAll('.product-card__link');
+      const caseConataier = document.querySelector('#case_container');
+      const carouselBlock = document.querySelector('#carouselBlock');
+      const backBtn = document.querySelector('#back');
+
+      spinButton.forEach((nex) => {
+        nex.addEventListener('click', () => {
+          caseConataier.classList.add('hide');
+          carouselBlock.classList.add('show');
+          let position = 0;
+          let isSpinning = false;
+          const carousel = document.getElementById('carousel');
+          const items = document.querySelectorAll('.carousel-item');
+          const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight);
+          const totalItems = items.length;
+          const totalWidth = totalItems * itemWidth;
+          const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+          const centerOffset = (containerWidth - itemWidth) / 2;
+          let currentIndex = 0;
+
+          function updateView() {
+            carousel.style.transform = `translateX(${centerOffset - (position % totalWidth)}px)`;
+          }
+
+          if (isSpinning) return;
+
+          isSpinning = true;
+
+          let initialSpeed = 50;
+          let spinTime = 0;
+          const duration = 4000;
+          const intervalTime = 20;
+
+          const spin = setInterval(() => {
+            let progress = spinTime / duration;
+            let speed = initialSpeed * (1 - progress);
+            position += speed;
+            updateView();
+            spinTime += intervalTime;
+
+            if (spinTime >= duration) {
+              clearInterval(spin);
+
+              const nearestItemIndex = Math.round(position / itemWidth) % totalItems;
+              currentIndex = (totalItems + nearestItemIndex) % totalItems;
+              highlightItem(currentIndex);
+
+              position = currentIndex * itemWidth;
+              updateView();
+
+              isSpinning = false;
+            }
+          }, intervalTime);
+
+          function highlightItem(index) {
+            items.forEach((item) => item.classList.remove('highlight'));
+            items[index].classList.add('highlight');
+          }
+        });
+      });
+      backBtn.addEventListener('click', () => {
+        const items = document.querySelectorAll('.carousel-item');
+        items.forEach((item) => {
+          item.classList.remove('highlight');
+        });
+        caseConataier.classList.remove('hide');
+        carouselBlock.classList.add('hide');
+        carouselBlock.classList.remove('show');
+      });
+    </script>
   </body>
 </html>
